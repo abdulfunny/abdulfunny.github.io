@@ -131,7 +131,7 @@ document.getElementById("img").src = ret.data.preview_url
 document.getElementById("caption").innerHTML = ret.data.caption
 document.getElementById("views").innerHTML = "<i style=\"margin-right:5px\" class=\"far fa-eye\"></i><label style=\"margin-right:15px\">" + ret.data.views + "</label><i style=\"margin-right:5px\" class=\"far fa-comment\"></i>" + ret.data.comments.length
 document.getElementById("time").innerHTML = "<label style=\"font-size:18px\"><i>Uploaded at <b>" + ret.data.time + "</b> by <b>" + ret.data.uploader + "</b></i></label>"
-document.title = ret.data.caption + " by " + ret.data.uploader + " [👁️" + ret.data.views + " | 💬" + ret.data.comments.length + "] [" + ret.data.file_name + " (" +ret.data.file_size + "KB)]"
+document.title = ret.data.caption.replace(/<br>/g, "") + " by " + ret.data.uploader + " [👁️" + ret.data.views + " | 💬" + ret.data.comments.length + "] [" + ret.data.file_name + " (" +ret.data.file_size + "KB)]"
 document.getElementById("tooltip").innerHTML = "What are your thoughts on " + ret.data.uploader + "'s post?"
 document.getElementById("info").innerHTML = "<label style=\"font-size:16px\"><i><i style=\"margin-right:5px\" class=\"far fa-folder\"></i>" + ret.data.file_name + " <b>[" + ret.data.file_size + "KB]</b><br><i style=\"margin-right:5px\" class=\"far fa-edit\"></i>Screenshotted at <b>" + ret.data.last_edited + "</b></i></label>"
 
