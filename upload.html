@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
@@ -134,10 +135,30 @@ file.addEventListener("change", ev => {
         })*/
 
         async function test(){
-            if(image == ""){
+            
+            client.query(
+  q.Get(
+    q.Match(q.Index('post_by_url'), document.getElementById("url").value)
+  )
+)
+      
+.then(function(ret) {
+  
+                alert("This URL is taken!")
+                
+})
+.catch(async function(e){
+  
+                if(image == ""){
                 alert("Please upload an image.")
             }
             else{
+                if(document.getElementById("caption").value == "" || document.getElementById("url").value == "" || document.getElementById("uploader").value == "")
+                {
+                    alert("Please fill out all fields.")
+                }
+                else
+                {
             const formdata = new FormData()
             formdata.append("image", image)
             var response = await fetch("https://api.imgur.com/3/image", {
@@ -162,8 +183,14 @@ q.Create(
 console.log(ret)
 alert("Your image has been uplaoded!")
 
-});
+});  
+            
+           
             }
+            }
+                
+});
+           
 
 
         }
